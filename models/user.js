@@ -1,3 +1,5 @@
+const { user } = require("../db");
+
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('user', {
         email: {
@@ -15,5 +17,13 @@ module.exports = function (sequelize, DataTypes) {
                 len: [7, 100]
             }
         }
+    }, {
+            hooks: {
+            beforeValidate: function (users, options) {
+                if (typeof user.email === 'string') {
+                    user.email = user.email.toLowerCase();
+                }
+            }
+        }
     });
-}
+};
