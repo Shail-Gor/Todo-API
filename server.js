@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var _ = require('underscore');
 var db = require('./db.js');
 var bcrypt = require('bcrypt');
+var middleware = require('./middleware.js')
 const { create } = require('underscore');
 
 var app = express();
